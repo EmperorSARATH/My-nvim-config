@@ -84,10 +84,15 @@
 --       autocmd ColorScheme * hi NormalFloat guifg=#F9E7C0 guibg=#1F1F1F
 --       autocmd ColorScheme * hi FloatBorder guifg=#F9E7C0 guibg=#1F1F1F
 --     ]])
---   end
+--
+-- -- Java class custom color for TSConstructor
+--
+--     vim.api.nvim_set_hl(0, 'TSConstructor', { fg = '#FF6F91' })
+--   end,
 -- }
+--
 
--- Kanagawa Theme (Original)
+--Kanagawa Theme (Original)
 -- return {
 --   -- https://github.com/rebelot/kanagawa.nvim
 --   'rebelot/kanagawa.nvim', -- You can replace this with your favorite colorscheme
@@ -117,6 +122,11 @@ return {
   opts = {
     transparent = true, -- Enable transparency
     style = "night", -- Other variations: "storm", "moon", "day"
+    on_highlights = function(hl, c)
+      -- Customize Java class color
+      hl["@type"] = { fg = "#FF6F91" } -- Highlight group for classes
+      hl["TSConstructor"] = { fg = "#FF6F91" } -- Highlight group for constructors
+    end,
   },
   config = function(_, opts)
     require('tokyonight').setup(opts)
@@ -136,8 +146,8 @@ return {
         vim.cmd('hi Normal guibg=NONE ctermbg=NONE')
         vim.cmd('hi LineNr guibg=NONE ctermbg=NONE')
       else
-        vim.cmd('hi Normal guibg=#1a1b26 ctermbg=0')
-        vim.cmd('hi LineNr guibg=#1a1b26 ctermbg=0')
+        vim.cmd('hi Normal guibg=#1f1f2e ctermbg=0')
+        vim.cmd('hi LineNr guibg=#1f1f2e ctermbg=0')
       end
 
       -- Notify the user
