@@ -21,6 +21,9 @@ keymap.set("n", "<leader>ww", ":w<CR>")                                         
 keymap.set("n", "gx", ":!open <c-r><c-a><CR>")                                                        -- open URL under cursor
 vim.api.nvim_set_keymap('t', '<C-i>', '<C-\\><C-n>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'f', ':lua vim.lsp.buf.format()<CR>', { noremap = true, silent = true }) --formatting code
+-- Pressing <Space><Space> acts like Enter
+vim.keymap.set("n", "<leader><leader>", "<CR>", { desc = "Simulate Enter" })
+
 
 -- Split window management
 keymap.set("n", "<leader>sv", "<C-w>v")     -- split window vertically
@@ -149,5 +152,12 @@ end, { desc = "Toggle diagnostics" })
 
 keymap.set("n", '<leader>de', function() require('telescope.builtin').diagnostics({ default_text = ":E:" }) end)
 
+-- which-key plugin for show ui for leader key combo
+local wk = require("which-key")
 
+wk.add({
+  -- ["<leader>f"] = { name = "+file" },       -- group name
+  -- ["<leader>ff"] = { "<cmd>Telescope find_files<cr>", "Find File" },
+  -- ["<leader>fg"] = { "<cmd>Telescope live_grep<cr>", "Grep" },
+})
 

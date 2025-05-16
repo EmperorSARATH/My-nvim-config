@@ -28,7 +28,7 @@ require("lazy").setup("plugins", {
 })
 
 
-require("plugins.null-ls")
+-- require("plugins.null-ls")
 
 
 
